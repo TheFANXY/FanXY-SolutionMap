@@ -137,22 +137,25 @@ class Solution {
         int k = 0;
         while (k < s.length() && s.charAt(k) == ' ') k ++;
         if (k == s.length()) return 0;
-
-        int op = 1;
+        
+        // 判正负
+        int flag = 1;
         if (s.charAt(k) == '-') {
             k ++;
-            op = -1;
-        } else if(s.charAt(k) == '+') k ++;
-        
-        int res = 0;
+            flag = -1;
+        }  else if (s.charAt(k) == '+') k ++;
+
+        // 进行转化
+        int ans = 0;
         while (k < s.length() && s.charAt(k) >= '0' && s.charAt(k) <= '9') {
             int x = s.charAt(k) - '0';
-            if (op > 0 && op * res > (Integer.MAX_VALUE - op * x) / 10) return Integer.MAX_VALUE;
-            if (op < 0 && op * res < (Integer.MIN_VALUE - op * x) / 10) return Integer.MIN_VALUE;
-            res = res * 10 + x;
+            if (flag == 1 && (Integer.MAX_VALUE - flag * x) / 10 < flag * ans) return Integer.MAX_VALUE;
+            if (flag != 1 && (Integer.MIN_VALUE - flag * x) / 10 > flag * ans) return Integer.MIN_VALUE;
+            ans = ans * 10 + x;
             k ++;
         }
-        return op * res;
+        if (flag == -1) ans = -ans;
+        return ans; 
     }
 }
 ```

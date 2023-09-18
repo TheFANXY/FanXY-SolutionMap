@@ -45,15 +45,14 @@ class Solution {
         if (strs.length == 0) return "";
         if (strs.length == 1) return strs[0];
 
-        StringBuilder res = new StringBuilder("");
+        StringBuilder ans = new StringBuilder("");
+
         for (int i = 0; i < strs[0].length(); i ++) {
-            char sentinel = strs[0].charAt(i);
-            for (String s : strs) {
-                if (i >= s.length() || s.charAt(i) != sentinel) return res.toString();
-            }
-            res.append(sentinel);
+            for (String s : strs) 
+                if (i >= s.length() || s.charAt(i) != strs[0].charAt(i)) return ans.toString();
+            ans.append(strs[0].charAt(i));
         }
-        return res.toString();
+        return ans.toString();
     }
 }
 ```
