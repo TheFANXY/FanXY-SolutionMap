@@ -11,7 +11,7 @@
 
 **示例 1：**
 
- ![1](./1 两数之和【leetcode2 高精度加法】.assets/1.png)
+ ![1](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/02/addtwonumber1.jpg)
 
 
 
