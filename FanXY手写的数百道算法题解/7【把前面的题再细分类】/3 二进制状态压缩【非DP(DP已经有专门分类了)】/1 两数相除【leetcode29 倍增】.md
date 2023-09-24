@@ -34,7 +34,7 @@
 
 **提示：**
 
-- `-231 <= dividend, divisor <= 231 - 1`
+- `-2^31 <= dividend, divisor <= 2^31 - 1`
 - `divisor != 0`
 
 
