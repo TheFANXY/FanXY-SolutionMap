@@ -67,9 +67,9 @@ pre   cur  sentinel
 
 ```sh
 -1 -> 1 <-> 2 <- 3    4 -> 5 -> *
-^	  			 ^	  ^
-|	  			 |	  |
-pre   			cur  sentinel
+^	  			^	 ^
+|	  			|	 |
+pre   		   cur  sentinel
 ```
 
 这是完成 k - 1 次反转链表之后的样子，此时需要首先让 这组的第一个元素，即每次反转开局上面图中的 `cur` 指向的 1 号节点不指向 2 ，而是指向当前 `sentinel` 节点。完成第一步接入原链表，变成下图。
@@ -79,9 +79,9 @@ pre   			cur  sentinel
 	  |              |
 	  |	             V
 -1 -> 1 <- 2 <- 3    4 -> 5 -> *
-^	  			^	 ^
-|	  			|	 |
-pre   		   cur  sentinel
+^	  		   ^	^
+|	  		   |	|
+pre   		  cur  sentinel
 ```
 
 下一步显然需要让前面的链表也指向反转的链表【此时的前面的链表只有 `pre` 指向的虚拟头节点，即让 `-1` 指向 `cur` 指针指向的 `3` 】。但是我们多考虑一下，最后肯定需要进行 `pre` 指针的位置移动，需要指向下一组需要反转的链表的第一个元素的前一个元素，即目前反转链表的第一个节点，上图应该是 `1`，但是问题来了，我们先进行前面的 `-1` 指向 `cur` ，就没有引用让 `pre` 最后移位到 `1` ，这也是为什么必须先用一个 `temp` 存一下 `pre.next` 地址的原因。
@@ -105,7 +105,8 @@ class Solution {
             ListNode q = pre;
             for (int i = 0; i < k && q != null; i ++) q = q.next;
             if (q == null) break;
-
+			
+            // k 个 一组反转链表
             ListNode cur = pre.next;
             ListNode sentinel = cur.next;
             for (int i = 0; i < k - 1; i ++) {

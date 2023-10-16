@@ -63,6 +63,8 @@ $$\color{Red}{递归实现组合型枚举【leetcode77 组合枚举】}$$
 
 即，当 `[st, n]` 这一段所有的数的个数 `n - st + 1` 如果小于 `k` ，那就代表剩下的数字全选都无法凑够一个答案，可以直接剪枝，无需再枚举后续的搜索树。
 
+
+
 ```java 
 class Solution {
     static List<List<Integer>> ans = new ArrayList<>();
@@ -94,7 +96,7 @@ class Solution {
 
 
 
-### acwing版证明思路
+### `acwing` 版证明思路
 
 ##### 参数
  **`dfs(int u, int st)`** 表明我们当前枚举到第u个数字（已经枚举了u-1个），我们下一个数字可以从`st`开始的数字去枚举
