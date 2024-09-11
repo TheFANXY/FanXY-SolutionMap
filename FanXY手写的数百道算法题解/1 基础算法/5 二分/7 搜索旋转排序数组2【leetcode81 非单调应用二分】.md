@@ -126,7 +126,7 @@ class Solution {
             if (nums[mid] < target) l = mid + 1;
             else r = mid;
         }
-        return nums[r] == target ? true : false;
+        return nums[r] == target;
     }
 }
 ```
