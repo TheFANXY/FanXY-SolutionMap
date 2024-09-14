@@ -81,7 +81,9 @@ for (int i = 0; i < len; i++) {
 class Solution {
     public int removeDuplicates(int[] nums) {
         int k = 0;
-        for (int i = 0, j = 0; i < nums.length && j < nums.length;) {
+        int i = 0;
+        int j = 0;
+        while (i < nums.length) {
             while (j < nums.length && nums[j] == nums[i]) j ++;    
             nums[k ++] = nums[i];
             if (j - i >= 2) nums[k ++] = nums[i];
