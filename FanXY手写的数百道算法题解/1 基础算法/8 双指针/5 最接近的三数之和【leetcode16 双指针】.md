@@ -1,6 +1,6 @@
-# <font color='bb000'>最接近的三数之和【leetcode16 双指针】</font>
+# 最接近的三数之和【leetcode16 双指针】
 
-## [我的网站=> 分享了我关于前后端的各种知识和生活美食~](https://www.fanxy.cloud)
+## [我的网站=> 分享了我关于前后端的各种知识和生活美食~](https://www.fanxy.icu)
 
 ## [我于Acwing平台分享的零散刷的各种各样的题](https://www.acwing.com/blog/content/33005/) 
 

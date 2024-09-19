@@ -1,6 +1,6 @@
 $$\color{Red}{递归实现组合型枚举【leetcode77 组合枚举】}$$
 
-## [我的网站=> 分享了我关于前后端的各种知识和生活美食~](https://www.fanxy.cloud/archives/SolutionMap)
+## [我的网站=> 分享了我关于前后端的各种知识和生活美食~](https://www.fanxy.icu/archives/SolutionMap)
 
 ## [我于Acwing平台分享的零散刷的各种各样的题](https://www.acwing.com/blog/content/33005/) 
 

@@ -56,28 +56,28 @@
 
 ```java
 class Solution {
-    
+    static List<Integer> path = new ArrayList<>();
     static List<List<Integer>> ans = new ArrayList<>();
 
-    static void dfs(int [] nums, int index, int target, List<Integer> list) {
+    static void dfs(int [] nums, int index, int target) {
         if (target == 0) {
-            ans.add(new ArrayList<Integer>(list));
+            ans.add(new ArrayList<>(path));
             return;
         }
-        if (index == nums.length || target < 0) return;
-
+        if (index == nums.length) return;
         for (int i = 0; i * nums[index] <= target; i ++) {
-            if (i != 0) list.add(nums[index]);
-            dfs(nums, index + 1, target - i * nums[index], list);
+            if (i != 0) path.add(nums[index]);
+            dfs(nums, index + 1, target - i * nums[index]);
         }
         // 恢复现场
-        for (int i = 0; i * nums[index] <= target; i ++)
-            if (i != 0) list.remove(list.size() - 1);
+        for (int i = 0; i * nums[index] <= target; i ++) {
+            if (i != 0) path.remove(path.size() - 1);
+        }
     }
-    
+
     public List<List<Integer>> combinationSum(int[] nums, int target) {
         ans.clear();
-        dfs(nums, 0, target, new ArrayList<Integer>());
+        dfs(nums, 0, target);
         return ans;
     }
 }
