@@ -76,3 +76,24 @@ class Solution {
 }
 ```
 
+这是一个做了一些数组前缀和的题，自然而然的一种想法，但是空间开的大了。
+
+```java
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int n = nums.length;
+        if (n == 1) return nums[0];
+        PriorityQueue<Integer> q = new PriorityQueue<>();
+        int [] s = new int[n + 1];
+        q.add(0);
+        int res = Integer.MIN_VALUE;
+        for (int i = 1; i <= n; i ++) {
+            s[i] = s[i - 1] + nums[i - 1];
+            res = Math.max(res, s[i] - q.peek());
+            q.add(s[i]);
+        }
+        return res;
+    }
+}
+```
+

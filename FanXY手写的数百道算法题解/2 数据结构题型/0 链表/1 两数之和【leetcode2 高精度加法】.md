@@ -72,7 +72,6 @@ class Solution {
         ListNode cur = dummy;
 
         while(t != 0 || l1 != null || l2 != null){
-            int val = 0;
             if (l1 != null){
                 t += l1.val;
                 l1 = l1.next;

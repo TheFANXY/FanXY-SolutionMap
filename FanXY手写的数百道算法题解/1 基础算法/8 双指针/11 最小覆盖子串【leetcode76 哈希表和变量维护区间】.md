@@ -115,3 +115,37 @@ class Solution {
 }
 ```
 
+单个哈希表就可以完成了。
+
+```java
+class Solution {
+    public String minWindow(String s, String t) {
+        HashMap<Character, Integer> mt = new HashMap<>();
+
+        int n = s.length();
+        int m = t.length();
+        int needMatch = 0;
+        String res = "";
+        // 未匹配为正数
+        for (char ct : t.toCharArray()) {
+            if (!mt.containsKey(ct)) needMatch ++;
+            mt.put(ct, mt.getOrDefault(ct, 0) + 1);
+        }
+        for (int L = 0, R = 0; R < n; R ++) {
+            char cs = s.charAt(R);
+            mt.put(cs, mt.getOrDefault(cs, 0) - 1);
+            if (mt.get(cs) == 0) needMatch --;
+            while (L < R && mt.get(s.charAt(L)) < 0) {
+                if (s.charAt(L) == -1) needMatch --;
+                mt.put(s.charAt(L), mt.getOrDefault(s.charAt(L), 0) + 1);
+                L ++;
+            }
+            if (needMatch == 0 && res.length() == 0 || res.length() > R - L + 1) {
+                res = s.substring(L, R + 1);
+            }
+        }
+        return res;
+    }
+}
+```
+

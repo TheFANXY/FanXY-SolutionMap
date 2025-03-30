@@ -130,3 +130,63 @@ class Solution {
 }
 ```
 
+
+
+### 这里有一个很厉害的染色法解决一次性学会迭代法
+
+官方题解中介绍了三种方法来完成树的中序遍历，包括：
+
+- 递归
+- 借助栈的迭代方法
+- 莫里斯遍历
+
+在树的深度优先遍历中（包括前序、中序、后序遍历），递归方法最为直观易懂，但考虑到效率，我们通常不推荐使用递归。
+
+栈迭代方法虽然提高了效率，但其嵌套循环却非常烧脑，不易理解，容易造成 “一看就懂，一写就废” 的窘况。而且对于不同的遍历顺序（前序、中序、后序），循环结构差异很大，更增加了记忆负担。
+
+因此，我在这里介绍一种 “颜色标记法” （瞎起的名字……），兼具栈迭代方法的高效，又像递归方法一样简洁易懂，更重要的是，这种方法对于前序、中序、后序遍历，能够写出完全一致的代码。
+
+其核心思想如下：
+
+使用颜色标记节点的状态，新节点为白色，已访问的节点为灰色。
+
+如果遇到的节点为白色，则将其标记为灰色，然后将其右子节点、自身、左子节点依次入栈。
+
+如果遇到的节点为灰色，则将节点的值输出。
+
+使用这种方法实现的中序遍历如下：
+
+```java
+class Solution {
+    static class Node {
+        TreeNode node; 
+        int color;
+        
+        public Node (TreeNode node, int color) {
+            this.node = node;
+            this.color = color;
+        }
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        LinkedList<Node> stk = new LinkedList<>();
+        List<Integer> ans = new ArrayList<>();
+        stk.push(new Node(root, 0));
+        while (!stk.isEmpty()) {
+            Node cur = stk.pop();
+            if (cur.node == null) continue;
+            if (cur.color == 0) {
+                stk.push(new Node(cur.node.right, 0));
+                stk.push(new Node(cur.node, 1));
+                stk.push(new Node(cur.node.left, 0));
+            } else {
+                ans.add(cur.node.val);
+            }
+        }    
+        return ans;
+    }
+}
+```
+
+
+
